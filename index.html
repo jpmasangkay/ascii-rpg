@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="description" content="ASCII RPG - A 3D raycasting RPG rendered entirely with ASCII characters" />
+    <title>The Ruins of Kaer Thal — ASCII RPG</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 100%; height: 100%;
+        overflow: hidden;
+        background: #000;
+        cursor: none;
+      }
+      #game-canvas {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+      }
+      #ui-overlay {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        pointer-events: none;
+        z-index: 10;
+      }
+      #minimap {
+        position: fixed;
+        top: 16px; right: 16px;
+        z-index: 20;
+        opacity: 0.8;
+      }
+      #crosshair {
+        position: fixed;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        color: rgba(220, 215, 200, 0.45);
+        font-size: 13px;
+        line-height: 1;
+        z-index: 15;
+        pointer-events: none;
+        font-family: monospace;
+        user-select: none;
+      }
+      #loading {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: #0a0a0f;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        font-family: monospace;
+        color: #c8a050;
+        transition: opacity 0.5s;
+      }
+      #loading h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-shadow: 0 0 20px rgba(200,160,80,0.5);
+      }
+      #loading p {
+        color: #888;
+        font-size: 1rem;
+      }
+      #stats {
+        position: fixed;
+        bottom: 16px; left: 16px;
+        color: #666;
+        font-family: monospace;
+        font-size: 12px;
+        z-index: 20;
+      }
+      #controls-hint {
+        position: fixed;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(200,160,80,0.6);
+        font-family: monospace;
+        font-size: 13px;
+        z-index: 20;
+        text-align: center;
+        transition: opacity 2s;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="game-canvas"></canvas>
+    <canvas id="minimap" width="160" height="160"></canvas>
+    <div id="crosshair">+</div>
+    <div id="stats"></div>
+    <div id="controls-hint">WASD — move · Mouse — look · Click — lock cursor · Explore the dungeon...</div>
+    <div id="loading">
+      <h1>⚔ The Ruins of Kaer Thal ⚔</h1>
+      <p style="margin-bottom: 8px; color: #a08040;">An ancient fortress swallowed by darkness...</p>
+      <p style="color: #666; font-size: 0.85rem;">Click to enter the ruins</p>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
